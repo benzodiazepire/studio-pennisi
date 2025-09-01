@@ -30,9 +30,11 @@
   <header class="site-header">
     <div class="container nav-bar">
       <div class="logo">
-        <img src="images/logo.png" alt="Logo Studio Legale Sonia Pennisi">
+        <a href="#hero">
+          <img src="images/logo.png" alt="Logo Studio Legale Sonia Pennisi">
+        </a>
       </div>
-      <nav class="nav-menu">
+      <nav class="nav-menu" aria-label="Navigazione principale">
         <a href="#about">Lo Studio</a>
         <a href="#areas">Competenze</a>
         <a href="#contact">Contatti</a>
@@ -41,7 +43,7 @@
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section id="hero" class="hero">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <h1>Avv. Sonia Pennisi</h1>
@@ -49,12 +51,12 @@
       <a href="#contact" class="cta-btn">Richiedi un appuntamento</a>
     </div>
     <div class="hero-bg">
-      <img src="images/avvocato.jpg" alt="Avvocato Sonia Pennisi">
+      <img src="images/avvocato.jpg" alt="Avvocato Sonia Pennisi - Studio Legale">
     </div>
   </section>
 
   <!-- Divider -->
-  <div class="section-divider"></div>
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- Bio -->
   <section id="about" class="bio">
@@ -64,8 +66,10 @@
         <p>Avvocato civilista con esperienza pluriennale, mi dedico con passione e competenza alla tutela dei diritti dei miei clienti. Il mio approccio si basa sull'ascolto attento delle esigenze di ciascuno, accompagnandolo in ogni fase del procedimento con professionalità e trasparenza.</p>
         <p>La mia formazione continua e l'aggiornamento costante mi permettono di offrire soluzioni legali efficaci e personalizzate, garantendo una difesa tempestiva e mirata per ottenere i migliori risultati possibili.</p>
         <address>
-          • Studio Legale: Via Pico 16, Mirandola (MO)<br>
-          • Si riceve solo su appuntamento
+          <ul>
+            <li>Studio Legale: Via Pico 16, Mirandola (MO)</li>
+            <li>Si riceve solo su appuntamento</li>
+          </ul>
         </address>
       </div>
     </div>
@@ -74,7 +78,7 @@
   <!-- Aree di competenza -->
   <section id="areas" class="areas">
     <div class="areas-bg">
-      <img src="images/lady-justice.png" alt="Lady Justice">
+      <img src="images/lady-justice.png" alt="" aria-hidden="true">
     </div>
     <div class="container">
       <h2>Aree di competenza</h2>
@@ -114,23 +118,23 @@
       <form id="contactForm">
         <div class="form-group">
           <label for="name">Nome e Cognome *</label>
-          <input type="text" id="name" required placeholder="Il tuo nome completo">
+          <input type="text" id="name" name="name" required placeholder="Il tuo nome completo">
         </div>
         <div class="form-group">
           <label for="email">Email *</label>
-          <input type="email" id="email" required placeholder="la.tua@email.com">
+          <input type="email" id="email" name="email" required placeholder="la.tua@email.com">
         </div>
         <div class="form-group">
           <label for="phone">Telefono *</label>
-          <input type="tel" id="phone" required placeholder="Il tuo numero di telefono">
+          <input type="tel" id="phone" name="phone" required placeholder="Il tuo numero di telefono">
         </div>
         <div class="form-group">
           <label for="subject">Oggetto</label>
-          <input type="text" id="subject" placeholder="Oggetto del messaggio">
+          <input type="text" id="subject" name="subject" placeholder="Oggetto del messaggio">
         </div>
         <div class="form-group">
           <label for="message">Messaggio *</label>
-          <textarea id="message" rows="5" required placeholder="Descrivi la tua richiesta..."></textarea>
+          <textarea id="message" name="message" rows="5" required placeholder="Descrivi la tua richiesta..."></textarea>
         </div>
         <div class="privacy-checkbox">
           <input type="checkbox" id="privacy" required>
