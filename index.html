@@ -18,8 +18,8 @@
   <link rel="icon" href="images/favicon.png" type="image/png">
 
   <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V9S8GW0M4B"></script>
-  <script>
+  <script type="text/plain" data-cookiecategory="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-V9S8GW0M4B"></script>
+  <script type="text/plain" data-cookiecategory="analytics">
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -30,11 +30,15 @@
   <!-- Cookie banner -->
   <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Informativa cookie">
     <div class="cookie-content">
+      <h3>Informativa sui Cookie</h3>
       <p>
-        Questo sito utilizza cookie tecnici per garantire una migliore esperienza di navigazione. 
-        <a href="#" onclick="showCookieInfo()">Maggiori informazioni</a>
+        Utilizziamo cookie tecnici per il funzionamento del sito e, previo tuo consenso, cookie di analisi e widget di terze parti. Cliccando "Accetta Tutti" acconsenti all'uso di tutti i cookie. Cliccando "Rifiuta" manterrai le impostazioni di default (solo tecnici).
       </p>
-      <button type="button" onclick="acceptCookies()">Accetta</button>
+      <div class="cookie-buttons">
+        <button type="button" onclick="handleCookies('all')" class="btn-accept">Accetta Tutti</button>
+        <button type="button" onclick="handleCookies('none')" class="btn-reject">Rifiuta</button>
+        <a href="cookie-policy.html" class="cookie-link">Cookie Policy</a>
+      </div>
     </div>
   </div>
 
@@ -129,7 +133,8 @@
     <div class="container">
       <h2>Dicono di noi</h2>
       <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-      <script src="https://elfsightcdn.com/platform.js" async></script>
+      <p class="cookie-placeholder">Per visualizzare le recensioni, accetta i cookie di terze parti.</p>
+      <script type="text/plain" data-cookiecategory="analytics" src="https://elfsightcdn.com/platform.js" async></script>
       <div class="elfsight-app-b5f14944-ba35-40d6-bdd1-84d76ddc5d5a" data-elfsight-app-lazy></div>
     </div>
   </section>
@@ -161,7 +166,9 @@
         </div>
         <div class="privacy-checkbox">
           <input type="checkbox" id="privacy" required>
-          <label for="privacy">Acconsento al trattamento dei dati personali ai sensi del GDPR</label>
+          <label for="privacy">
+            Ho letto l'<a href="privacy-policy.html" target="_blank">Informativa Privacy</a> e acconsento al trattamento dei dati.
+          </label>
         </div>
         <button type="submit">Invia messaggio</button>
       </form>
@@ -176,6 +183,7 @@
       </div>
       <div class="footer-info">
         <p>© 2024 Studio Legale Avv. Sonia Pennisi - Via Pico 16, Mirandola (MO)</p>
+        <p>P.I. 02638140364 | <a href="privacy-policy.html">Privacy Policy</a> | <a href="cookie-policy.html">Cookie Policy</a></p>
         <p>Si riceve solo su appuntamento</p>
         <p>Email: <a href="mailto:avvocato@studiolegalepennisi.com">avvocato@studiolegalepennisi.com</a></p>
         <p>Tel: 0535 21019</p>
