@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Mostra banner cookie se non accettato
   checkCookieConsent();
 
-  // Smooth scroll nav
+  // Smooth scroll nav (esistente)
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
@@ -64,23 +64,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* Cookie functions */
 function checkCookieConsent() {
-  if (!localStorage.getItem("cookiesAccepted")) {
+  const consent = localStorage.getItem("cookie-consent");
+  if (consent === "accepted") {
+    activateScripts();
+  } else if (consent === "rejected") {
+    // Non facciamo nulla, gli script restano bloccati
+  } else {
+    // Nessuna scelta effettuata, mostra banner
     const banner = document.getElementById("cookieBanner");
     if (banner) banner.style.display = "block";
   }
 }
 
-function acceptCookies() {
-  localStorage.setItem("cookiesAccepted", "true");
+function handleCookies(choice) {
   const banner = document.getElementById("cookieBanner");
   if (banner) banner.style.display = "none";
-  showToast("🍪 Preferenze cookie salvate.");
+
+  if (choice === 'all') {
+    localStorage.setItem("cookie-consent", "accepted");
+    activateScripts();
+    showToast("🍪 Cookie accettati. Grazie!");
+  } else {
+    localStorage.setItem("cookie-consent", "rejected");
+    showToast("🍪 Hai rifiutato i cookie non essenziali.");
+  }
 }
 
-function showCookieInfo() {
-  showToast(
-    "ℹ️ Questo sito utilizza solo cookie tecnici necessari al funzionamento."
-  );
+function activateScripts() {
+  // Trova tutti gli script con data-cookiecategory="analytics" e li attiva
+  const scripts = document.querySelectorAll('script[data-cookiecategory="analytics"]');
+  
+  scripts.forEach(script => {
+    // Crea un nuovo elemento script
+    const newScript = document.createElement('script');
+    
+    // Copia gli attributi (tranne type che diventa default JS)
+    if (script.src) newScript.src = script.src;
+    if (script.innerHTML) newScript.innerHTML = script.innerHTML;
+    newScript.async = true;
+
+    // Sostituisce il vecchio script o lo appende
+    script.parentNode.insertBefore(newScript, script);
+    script.remove(); // Rimuove il placeholder
+  });
+
+  // Nasconde il placeholder delle recensioni se presente
+  const placeholder = document.querySelector('.cookie-placeholder');
+  if(placeholder) placeholder.style.display = 'none';
 }
 
 /* Toast */
